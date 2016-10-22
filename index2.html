@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        #menu li{
+           float: left;
+            margin-right: 5px;
+        }
+       #menu .main-menu{
+            width: 120px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            background: #cccccc;
+           display: block;
+        }
+       /*hover再ie6上只能在a上使用*/
+       #menu>li:hover .sub-menu{
+           display: block;
+       }
+
+        #menu .sub-menu{
+            margin-left: 1px;
+            overflow: hidden;
+            display: none;
+            background: #eeeeee;
+        }
+        #menu .sub-menu li{
+            float: none;
+            border-bottom: 1px dotted cadetblue;
+            height: 25px;
+            line-height: 25px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <ul id="menu">
+        <li>
+            <a href="#" class="main-menu">link1</a>
+             <ul class="sub-menu">
+                 <li><a href="#">sublink1</a></li>
+                 <li><a href="#">sublink2</a></li>
+                 <li><a href="#">sublink3</a></li>
+             </ul>
+        </li>
+        <li>
+            <a href="#" class="main-menu">link2</a>
+            <ul  class="sub-menu">
+                <li><a href="#">sublink1</a></li>
+                <li><a href="#">sublink2</a></li>
+                <li><a href="#">sublink3</a></li>
+            </ul>
+        </li >
+        <li >
+            <a href="#" class="main-menu">link3</a>
+            <ul  class="sub-menu">
+                <li><a href="#">sublink1</a></li>
+                <li><a href="#">sublink2</a></li>
+                <li><a href="#">sublink3</a></li>
+            </ul>
+        </li>
+    </ul>
+
+</body>
+</html>
