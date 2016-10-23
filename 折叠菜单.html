@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        .menu-span{
+            height: 30px;
+            width: 200px;
+            background:#bbbbbb;
+            text-align: center;
+            line-height: 30px;
+            border-bottom:  1px dotted cadetblue;
+            display: block;
+        }
+        .sub-menu{
+            overflow: hidden;
+            display: none;
+        }
+        .sub-menu li{
+            width: 200px;
+            height: 25px;
+            background: #cccccc;
+            border-bottom:  1px dotted cadetblue;
+        }
+    </style>
+</head>
+<body>
+    <ul id="menu">
+        <li>
+            <span class="menu-span">水果菜单</span>
+             <ul class="sub-menu">
+                <li>111</li>
+                <li>222</li>
+                <li>333</li>
+            </ul>
+        </li>
+        <li>
+            <span class="menu-span">饮品菜单</span>
+            <ul class="sub-menu">
+                <li>444</li>
+                <li>555</li>
+                <li>666</li>
+            </ul>
+        </li>
+    </ul>
+    <script>
+          var oMenu = document.getElementById('menu');
+          var aSubMenu = oMenu.getElementsByTagName('ul');
+          var aMenuSpan = oMenu.getElementsByTagName('span');
+        for(var i=0;i<aMenuSpan.length;i++)
+        {
+            aMenuSpan[i].index = i;
+            aMenuSpan[i].flag = 1;
+            aMenuSpan[i].onclick = function(){
+                if(this.flag == 1)
+                {
+                    aSubMenu[this.index].style.display = 'block';
+                    this.flag = 0;
+                }
+               else
+                {
+                    aSubMenu[this.index].style.display  = 'none';
+                    this.flag=1;
+                }
+            };
+        }
+    </script>
+</body>
+</html>
