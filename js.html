@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+     <button id="btn">点我</button>
+     <div id="div1">
+         div1
+     </div>
+     <ul id="ul1">
+         <li>11</li>
+         <li>22</li>
+         <li>33</li>
+     </ul>
+    <script>
+        var obtn=document.getElementById('btn');
+
+//        alert(obtn.id);
+        obtn.onclick=function(){     //方法，事件
+            var odiv=document.getElementById('div1');
+            odiv.style.background = 'red';
+            odiv.style.width='200px';
+        };
+        var li = document.getElementsByTagName('li');//数组
+        for(var i=0;i<li.length;i++){
+            li[i].onclick = function(){
+              //  alert(li[i].innerHTML);  li[i]是undefined,因为for循环在页面加载的时候执行完成，而onclick在点击的时候执行，执行时i已经是3
+                alert(this.innerHTML);//指向当前正在操作的对象
+            };
+        }
+//js是解释型的代码，从上到下执行
+//        var a=5;
+//        var b='abcd';
+//        var c=false;
+//        var d='5';
+//        var e=6;
+//        console.log(a>e);
+//         var answar='a';
+//        switch (answar){
+//            case a:
+//            case A:
+//                alert("a");
+//                break;
+//        }
+//        console.log(a=='a'?'yes':'no');//三目运算符
+//        //fro循环
+//        for(var i=0;i<10;i++)
+//        {
+//            console.log(i);
+//        }
+//        //while do while
+//        var j=0;
+//        while(j<10){
+//            j++;
+//            if(j==4) continue;
+//            console.log(j);
+//        }
+//        var a=[3,4,5,6,7];
+//        console.log(a.length);
+//        console.log(a[5]);//返回undefined,声明参数但是没有赋值
+      //函数
+//        function aa(str)
+//        {
+//            alert(str);
+//        }
+//        aa('yes');
+//        function sayhai( name , age ,sex){  //函数声明
+//            console.log(arguments[0]);
+//            console.log(arguments[1]);
+//            console.log(arguments[2]);
+//            console.log(arguments[3]);
+//        }
+//        sayhai('lisi',32,'malse')
+//        var aa = function(){  //函数表达式  函数是对象，是一种数据类型
+//            console.log('mm');
+//        }
+
+        //函数式编程
+//        function aa(b){
+//            b();
+//        }
+//        aa(function(){
+//            console.log('yes');
+//        });
+    </script>
+     <!--js对象有有三种：
+          1，内置对象
+          2，自定义对象
+          3，DOM对象：DOM（document object ）  html,css标签是DOM对象
+       对象，引用存储在堆里
+       基本数据类型：存储在栈里
+     -->
+</body>
+</html>
