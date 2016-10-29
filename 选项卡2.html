@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        #menu li{
+            width: 120px;
+            height: 30px;
+            background: #cccccc;
+            float: left;
+            text-align: center;
+            line-height: 30px;
+            margin-left: 20px;
+            cursor: pointer;
+        }
+        #menu .selected{
+            background: #000;
+            color: white;
+        }
+        #content1{
+            height: 500px;
+            margin-left: 20px;
+            clear: both;
+            border-top: 1px solid #000000;
+            background: #dddddd;
+        }
+        #content1 div{
+            overflow: hidden;
+            display: none;
+        }
+        #content1 .selected{
+            display:block;
+        }
+    </style>
+</head>
+<body>
+<ul id="menu">
+    <li class="selected">jquery</li>
+    <li>java script</li>
+    <li>css</li>
+</ul>
+<div id="content1">
+    <div class="selected">1111111</div>
+    <div>2222222</div>
+    <div>3333333</div>
+</div>
+
+<script>
+    var oMenu = document.getElementById('menu');
+    var aLi = oMenu.getElementsByTagName('li');
+    var oContent1 = document.getElementById('content1');
+    var aDiv = oContent1.getElementsByTagName('div');
+//    var aContent =
+//            ["111111111",
+//                "222222222",
+//                "333333333"];
+    var last = 0;
+    for(var i=0;i<aLi.length;i++){
+        aLi[i].index =i;
+        aLi[i].onclick = function(){
+            aLi[last].className = "";
+            aDiv[last].className="";
+            this.className = "selected";
+            aDiv[this.index].className ="selected";
+            last = this.index;
+//            oContent1.innerHTML = aContent[this.index];
+        };
+    }
+    </script>
+</body>
+</html>
