@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        img{
+            border: 0;
+        }
+        #container{
+            height: 300px;
+            width: 400px;
+            margin: 50px  auto;
+            position:relative;
+        }
+        #nav li,#arrows span{
+            float: left;
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            background: #000;
+            color: #ffffff;
+            text-align: center;
+            line-height: 20px;
+            cursor: pointer;
+        }
+
+       #arrows span:hover{
+            background: orange;
+            color: #ffffff;
+        }
+       #nav .selected{
+           background: orange;
+           color: #ffffff;
+       }
+        #nav{
+            /*position: relative;/!*相对定位1，相对初始位置2，空间不释放*!/*/
+            position: absolute;  /*绝对定位，1空间释放，2如果祖先元素没有定位，相对于body定位，如果祖先元素有定位，则相对于最近的祖先元素定位*/
+            right: 3px;
+            bottom: 10px;
+        }
+        #arrows{
+           position: absolute;
+            left: 3px;
+            bottom: 10px;
+        }
+        img{
+            width: 400px;
+            height: 300px;
+        }
+       #img1 a{
+           overflow: hidden;
+          display: none;
+       }
+        #img1 .selected{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+  <div id="container">
+      <ul id="nav">
+          <li class="selected">1</li>
+          <li>2</li>
+          <li>3</li>
+          <li>4</li>
+      </ul>
+      <div id="img1">
+          <a href="#" class="selected"><img src="img/dz.jpg" alt=""></a>
+          <a href="#"><img src="img/j1.jpg" alt=""></a>
+          <a href="#"><img src="img/shaoyu.jpg" alt=""></a>
+          <a href="#"><img src="img/qiang.jpg" alt=""></a>
+      </div>
+      <div id="arrows">
+          <span> &lt; </span>
+          <span> &gt; </span>
+      </div>
+  </div>
+  <script>
+      var oContainer = document.getElementById('container');
+      var oUl = document.getElementById('nav');
+      var oImg = document.getElementById('img1');
+      var oSpan = document.getElementById('arrows');
+      var aLi = oUl.getElementsByTagName('li');
+      var aImg = oImg.getElementsByTagName('a');
+      var aSpan = oSpan.getElementsByTagName('span');
+      var iNom = 0;//int 数据类型代表当前图片的索引
+      for(var i = 0;i<aLi.length;i++){
+          aLi[i].index = i;
+          aLi[i].onmouseover = function(){
+             aImg1(this.index);   //this一定出现在function中，this放在一个对象的方法（事件）中表示该对象，在一个普通的函数中this指向window
+              iNom = this.index;
+          };
+      }
+      aSpan[0].onclick = function () {
+           iNom--;
+//          if(iNom<0){
+//              iNom = aLi.length - 1;
+//          }
+          iNom = (iNom+aLi.length) %aLi.length;
+          aImg1(iNom);
+      };
+      aSpan[1].onclick = function(){
+          iNom++;
+//          if(iNom == aLi.length){
+//              iNom = 0;
+//          }
+          iNom = iNom % aLi.length;
+          aImg1(iNom);
+      };
+      function aImg1(elem){
+          for(var i=0;i<aImg.length;i++){
+              aImg[i].className = "";
+              aLi[i].className = "";
+          }
+//          elem.className = "selected";
+//          aImg[elem.index].className = "selected";
+           aLi[elem].className = "selected";
+          aImg[elem].className = "selected";
+      }
+
+      //     var timer = setInterval(function(){
+      //                aSpan[1].onclick();
+      //             },2000);
+      var timer;
+      function run(){
+          timer = setInterval(function(){
+              aSpan[1].onclick();
+          },2000);
+      }
+      run();
+      oContainer.onmouseover = function(){
+          clearInterval(timer);
+      };
+      oContainer.onmouseout = function(){
+          run();
+      };
+//      var num = 0;
+//      aSpan[0].onclick = function(){
+//          for(var i=0;i<aImg.length;i++) {
+//              if(aImg[i].className == "selected") {
+//                  aImg[i].className = "";
+//                  num = i;
+//              }
+//              }
+//          aLi[num].className = "";
+//              num=num-1;
+//              if(num<0)
+//                  num=3;
+//              aImg[num].className = "selected";
+//             aLi[num].className = "selected";
+//      };
+//      aSpan[1].onclick = function(){
+//          for(var i=0;i<aImg.length;i++) {
+//              if(aImg[i].className == "selected") {
+//                  aImg[i].className = "";
+//                  num = i;
+//              }
+//          }
+//          aLi[num].className = "";
+//          num=num+1;
+//          if(num>3)
+//              num=0;
+//          aImg[num].className = "selected";
+//          aLi[num].className = "selected";
+//      };
+
+  </script>
+</body>
+</html>
