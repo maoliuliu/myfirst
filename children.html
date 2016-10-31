@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+  <div id="div1">
+      <h1>h1</h1>
+      <p>p</p>
+  </div>
+  <script>
+      var oDIv = document.getElementById('div1');
+      var oH1 = oDIv.getElementsByTagName('h1');
+      console.log(oDIv.children);
+      console.log(oDIv.childNodes);//用来获取父元素下所有的孩子节点包括文本结点和元素结点，空格和回车也是文本结点
+      console.log(oDIv.childNodes[1].nodeType);
+      oH1.onclick = function(){
+
+      //找到兄弟   oH1.nextSibling;IE中忽略文本结点，标准浏览器会找到文本
+//      oH1.nextElementSibling;    IE不支持
+       var sib = next(oH1);
+      };
+     // 封装函数解决兼容性问题
+      function next(elem){
+          do{
+             elem = elem.nextSibling;
+          }while(elem && elem.nodeType != 1);
+          return elem;
+      }
+//      var a = 0,null,undefied，空字符串,即判断为false
+//      if(a){
+//      console.log("xixi");
+   //   }
+  </script>
+</body>
+</html>
