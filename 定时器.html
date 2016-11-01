@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <button id="btn">开始</button>
+    <button id="btn1">结束</button>
+    <script>
+        var oBtu = document.getElementById('btn');
+        var oBtu1 = document.getElementById('btn1');
+        var timer;
+        oBtu.onclick = function(){
+           timer = setInterval(function(){
+               console.log(Math.random());
+           },2000);
+        };
+        oBtu1.onclick = function () {
+            clearInterval(timer);
+        };
+    </script>
+</body>
+</html>
