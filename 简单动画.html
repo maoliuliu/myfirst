@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #div{
+           height: 200px;
+            width: 300px;
+            background: #ff0000;
+            position:absolute;
+            left: 0;
+            top: 50px;
+        }
+    </style>
+</head>
+<body>
+      <button id="but">移动</button>
+      <div id="div">div</div>
+      <script src="jslib.js"></script>
+      <script>
+          var oDiv = document.getElementById('div');
+          var oBut = document.getElementById('but');
+          oBut.onclick = function () {
+                    animate(oDiv,
+                            {left:200,top:300},
+                            function(){
+                                animate(oDiv,
+                                        {height:400,width:600}
+                    )}
+              );
+          };
+//          oBut.onclick = function(){
+//              setInterval(function( ){oDiv.style.left = oDiv.offsetLeft + 10 + 'px';}//offsetleft只能用来获取之不能用来赋值)
+//               ,80);   //attribute属性  callback回调函数()
+               //   对象{}  1,内置对象（常用的数组，日期，数学）2，DOM对象（html标签）3,自定义对象({})
+              //基本类型存储在栈里，new 出来的对象在堆里
+//          };
+//
+//          var obj = new Object();
+//          obj.name = 'lisi';
+//          obj.age = 20;
+//          obj.sayHi = function(){
+//              alert(this.name);//可以使用obj，但是用this更灵活
+//          };//定义一个方法
+//          obj.sayHi();
+//          var obj1 = {  //对象直接量，适合作为参数传递
+//              name:'lisi',
+//              age:20,
+//              sayHi:function(){
+//                  alert(this.name);
+//              }
+//          };
+//          obj1.sayHi();
+      </script>
+</body>
+</html>
