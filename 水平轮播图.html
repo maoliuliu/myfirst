@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+        }
+        img{
+            border: 0;
+            width: 400px;
+            height: 300px;
+        }
+      #container{
+          width: 400px;
+          height: 300px;
+          margin: 50px auto;
+          overflow: hidden;
+          position: relative;
+      }
+      #nav{
+          position: absolute;
+          right: 10px;
+          bottom: 10px;
+          z-index: 999;
+      }
+        #nav li{
+            width: 10px;
+            height: 10px;
+            background: pink;
+            float: left;
+            margin-right: 3px;
+            cursor: pointer;
+        }
+        #nav .selected{
+            background: #cc0000;
+        }
+      #content{
+          width: 1600px;
+          position: absolute;
+          left: 0;
+          z-index: 0;
+      }
+      #content a{
+          float: left;
+      }
+        #arrows {
+            position: absolute;
+            left: 3px;
+            bottom: 10px;
+            z-index: 9999;
+        }
+        #arrows span{
+            float: left;
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            background: pink;
+            color: #ffffff;
+            text-align: center;
+            line-height: 20px;
+            cursor: pointer;
+        }
+
+        /*yui    boots   kissy(keep it simple stupid,yeach!)*/
+    </style>
+<body>
+    <div id="container">
+        <ul id="nav">
+            <li class="selected"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div id="content">
+            <a href="#"><img src="img/j1.jpg" alt=""/></a>
+            <a href="#"><img src="img/j2.jpg" alt=""/></a>
+            <a href="#"><img src="img/qiang.jpg" alt=""/></a>
+            <a href="#"><img src="img/shaoyu.jpg" alt=""/></a>
+        </div>
+        <div id="arrows">
+            <span onselectstart = 'return false'> &lt; </span>
+            <span onselectstart = 'return false'> &gt; </span>
+        </div>
+    </div>
+    <script src="jslib.js"></script>
+    <script>
+        var oContainer = document.getElementById('container');
+       var oContent = document.getElementById('content');
+       var aImg = oContent.getElementsByTagName('a');
+       var oNav = document.getElementById('nav');
+       var aLi = oNav.getElementsByTagName('li');
+       var oArrows = document.getElementById('arrows');
+       var aSpan = oArrows.getElementsByTagName('span');
+       var iNom = 0;
+//        oContent.appendChild(aImg[0].cloneNode());
+//       oContent.style.width = aImg.length*aImg[0].offsetWidth;
+       //       var newNode = aImg[0].cloneNode();
+//       oContent.appendChild(newNode);
+//       var oLi = document.createElement('li');
+//       oNav.appendChild(oLi);
+        oContent.innerHTML += aImg[0].innerHTML;
+        oContent.style.width = oContent.offsetWidth+ aImg[0].offsetWidth+ 'px';
+        for (var i = 0; i < aLi.length; i++) {
+           aLi[i].index = i;
+           aLi[i].onmouseover = function () {
+               if (this.index != iNom) {
+                   moblieImg(this.index);
+                   iNom = this.index;
+               }
+           };
+       }
+       aSpan[1].onclick = function (){
+           iNom++;
+           if(iNom == (aLi.length+1)){  //aLi.length+1 === aImg.lenght
+               oContent.style.left = 0 ;
+               iNom=1;
+           }
+           moblieImg(iNom);
+       };
+        aSpan[0].onclick = function (){
+            iNom--;
+            if(iNom == -1){
+                oContent.style.left = -aImg[0].offsetWidth * aImg.length-1 + 'px' ;
+                iNom = aImg.length - 2;
+            }
+            moblieImg(iNom);
+        };
+       var timer;
+       function run() {
+           timer = setInterval(function () {
+               aSpan[1].onclick();
+           }, 2000);
+       }
+       run();
+       oContainer.onmouseover = function () {
+           clearInterval(timer);
+       };
+       oContainer.onmouseout = function () {
+           run();
+       };
+        function moblieImg(index){
+            for(var i=0;i<aLi.length;i++){
+                aLi[i].className = '';
+            }
+            aLi[index == aLi.length? 0 : index].className = 'selected';
+//            if(index == aLi.length){
+//                aLi[0].className = 'selected';
+//            }else{
+//              aLi[index].className = 'selected';
+//            }
+            var lenght = -aImg[0].offsetWidth*index;
+            animate(oContent,{left:lenght});
+        }
+    </script>
+</body>
+</html>
