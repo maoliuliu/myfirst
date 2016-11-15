@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>拖拽</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            background: #ff0000;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+     <div id="div1"></div>
+     <script>
+         var oDiv = document.getElementById('div1');
+         var iDisX = iDisY = 0;
+         oDiv.onmousedown = function(e){
+             e = e || window.event;
+             iDisX = e.clientX - oDiv.offsetLeft;
+             iDisY = e.clientY - oDiv.offsetTop;
+             document.onmousemove = function(e){
+                 e = e || window.event;
+                 var iLeft = e.clientX - iDisX;
+                 var iTop = e.clientY - iDisY;
+                 if(iLeft <= 20){
+                     iLeft = 0;
+                 }
+//                 if(oDiv.style.right <= 0){
+//                     iLeft = 0;
+//                 }
+                 if(iLeft >= document.documentElement.clientWidth - oDiv.offsetWidth){
+                     iLeft = document.documentElement.clientWidth - oDiv.offsetWidth;
+                 }
+                 if(iTop <= 20){
+                     iTop = 0;
+                 }
+                 if(iTop >= document.documentElement.clientHeight - oDiv.offsetHeight){
+                     iTop = document.documentElement.clientHeight - oDiv.offsetHeight;
+                 }
+                 oDiv.style.left =  iLeft+'px';
+                 oDiv.style.top = iTop +'px';
+//                 e.preventDefault();   标准浏览器支持
+//                 e.returnValue =false;  IE支持
+                 return false;//组织默认行为
+             };
+             document.onmouseup = function(){
+                 document.onmousemove = null;
+                 document.onmouseup = null;
+             };
+         };
+     </script>
+<!--event 是一个事件对象   ，标准浏览器下通过形参传递，IE下是通过window.event
+    e 事件对象  任何一个事件都有三个  事件 事件源 事件处理函数
+
+
+-->
+</body>
+</html>
