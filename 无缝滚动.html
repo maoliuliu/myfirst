@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>无缝滚动</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        #container{
+            width: 390px;
+            height: 200px;
+            border: 1px solid #000000;
+            margin: 100px auto;
+            overflow: hidden;
+            position: relative;
+        }
+        #content{
+            height: 120px;
+            width: 520px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        #content li{
+            width: 120px;
+            height: 120px;
+            background: #000;
+            font-size: 30px;
+            color: #ffffff;
+            float: left;
+            margin-right: 10px;
+            text-align: center;
+            line-height: 120px;
+        }
+        #prev,#next{
+            width: 50px;
+            height: 30px;
+            background: #cccccc;
+            color: #ffffff;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 10px;
+            float: left;
+        }
+       #arrows{
+           width: 120px;
+           height: 30px;
+           position: absolute;
+           left: 50%;
+           top: 150px;
+           margin-left: -60px;
+       }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <ul id="content">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+        <div id="arrows">
+            <span id="prev">向左</span>
+            <span id="next">向右</span>
+        </div>
+    </div>
+    <script>
+//        var oContainer = document.getElementById('container');
+        var oContent = document.getElementById('content');
+        var aLi = oContent.getElementsByTagName('li');
+        var oPrev = document.getElementById('prev');
+        var oNext = document.getElementById('next');
+        oContent.innerHTML += oContent.innerHTML;
+        oContent.style.width = oContent.offsetWidth*2 + 'px';
+        var speed = 5;
+        setInterval(function(){
+            oContent.style.left = oContent.offsetLeft - speed + 'px';
+            if(oContent.offsetLeft <= -oContent.offsetWidth/2){
+                oContent.style.left = 0;
+            }
+            if(oContent.offsetLeft > 0){
+                oContent.style.left = - oContent.offsetWidth/2 + 'px';
+            }
+        },50)
+        oPrev.onmouseover =oNext.onmouseover = function(){
+            if(this ==oPrev){
+                speed = 5;
+            }
+            else{
+                speed = -5;
+            }
+        };
+
+
+
+
+
+//        offsetWidth获得元素宽度包括boder and padding    offsetHeight 获得高度和宽一样  offsetLeft 获得距离已定位祖先元素的左边距 offsetTop offsetParent获得父元素
+    </script>
+</body>
+</html>
