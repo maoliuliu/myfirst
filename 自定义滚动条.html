@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>自定义滚动条</title>
+    <style>
+        #container{
+            width: 200px;
+            height: 300px;
+            border: 1px solid #cccccc;
+            overflow: hidden;
+            position: relative;
+        }
+        #content{
+            width: 180px;
+            position:absolute;
+            left: 0;
+            top: 0 ;
+        }
+       #scroll-bar{
+           height: 300px;
+           width: 10px;
+           background: #aaaaaa;
+           position: absolute;
+           right: 0;
+           top: 0;
+       }
+        #scroll-btn{
+            height: 10px;
+            width: 10px;
+            background: blue;
+            position:absolute;
+            left: 0;
+            top: 0;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+      <div id="container">
+          <div id="content">
+              嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎
+              嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎
+              嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎
+              嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎
+              嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎
+              嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎
+              嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎
+              嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎
+              嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎
+              嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎
+              嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎v
+              嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎
+              嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎
+              嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎
+              嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎
+          </div>
+          <div id="scroll-bar">
+              <span id="scroll-btn">
+              </span>
+          </div>
+      </div>
+      <script>
+          var oContainer = document.getElementById('container');
+          var oContent = document.getElementById('content');
+          var oBar = document.getElementById('scroll-bar');
+          var oBtn = document.getElementById('scroll-btn');
+          var iDisY = 0;
+          var iMaxbar = oContainer.offsetHeight - oBtn.offsetHeight;
+          var iMaxCon = oContent.offsetHeight - oContainer.offsetHeight;
+          oBtn.onmousedown = function(e){
+              e = e||window.event;
+               iDisY = e.clientY - oBtn.offsetTop-oContainer.offsetTop;
+              document.onmousemove = function(e){
+                  e = e||window.event;
+               var iTop = e.clientY - oContainer.offsetTop - iDisY;
+                  if(iTop <= 0){
+                      iTop = 0;
+                  }
+                  if(iTop >= iMaxbar){
+                      iTop =iMaxbar;
+                  }
+                  oBtn.style.top = iTop + 'px';
+                  oContent.style.top = -(iTop/iMaxbar)*iMaxCon + 'px';
+                  return false;
+              };
+              document.onmouseup = function(){
+                  document.onmousemove = null;
+                  document.onmouseup = null;
+              };
+          };
+      </script>
+</body>
+</html>
