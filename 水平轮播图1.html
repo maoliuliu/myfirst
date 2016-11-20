@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    ul {
+        list-style: none;
+    }
+    img{
+        border: 0;
+        width: 400px;
+        height: 300px;
+    }
+    #container{
+        width: 400px;
+        height: 300px;
+        margin: 50px auto;
+        overflow: hidden;
+        position: relative;
+    }
+    #nav{
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        z-index: 999;
+    }
+    #nav li{
+        width: 10px;
+        height: 10px;
+        background: pink;
+        float: left;
+        margin-right: 3px;
+        cursor: pointer;
+    }
+    #nav .selected{
+        background: #cc0000;
+    }
+    #content{
+        position: absolute;
+        left: 0;
+        z-index: 0;
+    }
+    #content a{
+        float: left;
+    }
+    #arrows {
+        position: absolute;
+        left: 3px;
+        bottom: 10px;
+        z-index: 9999;
+    }
+    #arrows span{
+        float: left;
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+        background: pink;
+        color: #ffffff;
+        text-align: center;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    /*yui    boots   kissy(keep it simple stup,yeach!)*/
+</style>
+<body>
+<div id="container">
+    <ul id="nav">
+    </ul>
+    <div id="content">
+        <a href="#"><img src="img/j1.jpg" alt=""/></a>
+        <a href="#"><img src="img/j2.jpg" alt=""/></a>
+        <a href="#"><img src="img/qiang.jpg" alt=""/></a>
+        <a href="#"><img src="img/shaoyu.jpg" alt=""/></a>
+    </div>
+    <div id="arrows">
+        <span onselectstart = 'return false'> &lt; </span>
+        <span onselectstart = 'return false'> &gt; </span>
+    </div>
+</div>
+<script src="jslib.js"></script>
+<script>
+    var oContent = document.getElementById('content');
+    var aImg = oContent.children;
+    var oNav = document.getElementById('nav');
+    var sHtml = '';
+    for(var i=0;i<aImg.length;i++){
+//        sHtml += '<li '+(i==0?'class="selected"':'')+'>'+(i+1)+'</li>';
+        sHtml += '<li '+(i==0?'class="selected"':'')+'>'+'</li>';
+    }
+    oNav.innerHTML = sHtml;
+    oContent.style.width = aImg.length*aImg[0].offsetWidth + 'px';
+    var aLi = oContent.children;
+    for(var i=0;i<aLi.length;i++){
+        aLi[i].index = i;
+        aLi[i].onmouseover = function () {
+
+        };
+    }
+ function changeImg(index){
+          for
+    }
+</script>
+</body>
+</html>
