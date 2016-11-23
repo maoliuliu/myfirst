@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //不污染全局变量,函数立即调用
+    (function(){
+
+    })();
+
+
+    //  var age =  window.prompt("请输入年龄");
+    //  if(age < 14){
+    //      document.write("该年龄是儿童！");
+    //  }else if(age >= 14 && age<24){
+    //      document.write("该年龄是青少年！");
+    //  }else if(age >= 24 && age<40){
+    //      document.write("该年龄是青年！");
+    //  }else if(age >= 40 && age<60){
+    //      document.write("该年龄是中年！");
+    //  }else{
+    //      document.write("该年龄是老年！");
+    //  }
+
+    var number = window.prompt("请输入0-6");  //返回值是字符
+    switch(parseInt(number)){
+        case 0:
+            alert("星期一");
+            break;
+        case 1:
+            alert("星期一");
+            break;
+        case 2:
+            alert("星期二");
+            break;
+        case 3:
+            alert("星期三");
+            break;
+        case 4:
+            alert("星期四");
+            break;
+        case 5:
+            alert("星期五");
+            break;
+        case 6:
+            alert("星期六");
+            break;
+    }
+   //递归求阶乘
+    function recurrence(num){
+        if(num == 1){
+            return 1;//出口
+        }
+//        return num*recurrence(num-1);
+        return arguments.callee(num-1);//js特有，自己调用自己
+    }
+
+    //var sum = 1;
+    //var num = 0 ;
+    //for(var i = 1 ;i<=10;i++){
+    //    sum *= i;
+    //     num += sum;
+    //}
+    //document.write(sum);
+    //document.write("    ");
+    //document.write(num);
+
+    //for(var i=1;i<=5 ;i++){
+    //    for(var j=1;j<=i;j++){
+    //        document.write(j);
+    //        document.write(" ");
+    //    }
+    //    document.write("<br>");
+    //}
+    //var n = 5;
+    //for(var i =1;i<=n;i++){
+    //    for(var j = 1;j<=n-i;j++){
+    //        document.write("&nbsp;")
+    //    }
+    //    for(var j = 1;j<=i;j++){
+    //        document.write("*")
+    //        document.write("&nbsp;")
+    //    }
+    //    document.write("<br>");
+    //}
+
+    //for(var i = 100;i<1000;i++){
+    //    if(i % 4 == 2 && i % 7 == 3 && i % 9 == 5){
+    //        document.write(i);
+    //        document.write("<br>")
+    //    }
+    //}
+    for (var i = 1000; i < 10000; i++) {
+        var four = Math.floor(i / 1000);
+        var three = Math.floor((i - four * 1000) / 100);  //Math.floor(i/100)%10;
+        var two = Math.floor((i - four * 1000 - three * 100) / 10);
+        var sum = two + three;
+        if (i % 13 == 0 && four == sum) {
+            document.write(i);
+            document.write("&nbsp");
+        }
+
+    }
+    //function f(num){
+    //    document.write(num*num*4+num*3+2);
+    //}
+    //var numb = window.prompt("请输入一个数：");
+    //f(numb);
+    //document.write("<br>");
+    //function Min(a,b){
+    //    document.write("较小的数"+a>b ? b:a);
+    //}
+    //var num1 = window.prompt("请输入第一个数：");
+    //var num2 = window.prompt("请输入第二个数：");
+    //Min(num1,num2);
+
+
+    var iCount = 0;
+    var iNum;
+    var iJi;
+    function jisuan(n) {
+        for (var i = 0; i < n; i++) {
+            iJi = 0;
+            for (var j = 0; j < 3; j++) {
+                iNumum = Math.floor(Math.random() * 9) + 1;
+                if (iNumum == 8 && iJi == 0) {
+                    iCount++;
+                    iJi++;
+                }
+            }
+        }
+        document.write(iCount / 100);
+        document.write("<br>");
+    }
+    jisuan(100);
+
+
+    function random1() {
+        var iNum = Math.floor(Math.random() * 101);
+        return iNum;
+    }
+
+    var date = new Date();
+    var year = date.getYear();
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    var hour = date.getHours();
+    var mintue = date.getMinutes();
+    var sec = date.getSeconds();
+    var week = date.getDay();
+    document.write("现在是" + year + "年" + month + "月" + day + "日" + hour + "点" + mintue + "分" + sec + "秒（星期" + week + ")，欢迎您的到访！")
+    document.write("<br>");
+
+
+
+    function CollectDigits(s) {
+        var str = [];
+        for (var i = 0; i < s.length; i++) {
+            var zi = s.charAt(i);
+            if (0 <= zi && zi <= 9) {
+                str.push(zi);
+            }
+        }
+        return str.join("");
+    }
+    document.write(CollectDigits("1a2b3c456"));
+    document.write("<br>");
+
+
+
+    function Merge(s1, s2) {
+        var lenght = s1.length > s2.length ? s2.length : s1.length;
+        var str = [];
+        var j = 0;
+        for (var i = 0; i < lenght; i++) {
+            str.push(s1.charAt(i)) ;
+            j++;
+            str.push(s2.charAt(i));
+            j++;
+        }
+        var ss = s1.length > s2.length ? s1 : s2;
+        for (var k = lenght; k < ss.length; k++) {
+            str[j] = ss[k];
+            j++;
+        }
+        return str.join("");
+    }
+    document.write(Merge("123456", "abc"));
+    document.write("<br>");
+    //如果字符数字越界输出的值是空字符串
+    function Merge(s1, s2){
+        var result = "";
+        var length = s1.length>s2.length ? s1.length:s2.length;
+        for(var i = 0;i<length;i++){
+            result += s1.charAt(i) + s2.charAt(i);
+        }
+        return result;
+    }
+
+    function gread(arr) {
+        var sum = 0;
+        var aGread = [];
+        var j = 0;
+        for (var i = 0; i < arr.length; i++) {
+            sum += arr[i];
+            if (arr[i] < 60) {
+                aGread[j] = arr[i];
+                j++;
+            }
+        }
+        document.write("总分" + sum + "平均分" + sum / arr.length + "未及格：" + aGread.join(","));
+    }
+
+    function Fibonacci() {
+        var array = [];
+        array[0] = 1;
+        array[1] = 1;
+        for (var i = 2; i < 40; i++) {
+            array[i] = array[i - 1] + array[i - 2];
+        }
+        array.reverse();
+        var j = 0;
+        for (var i = 0; i < 40; i++) {
+            document.write(array[i]);
+            document.write("&nbsp;");
+            j++;
+            if (j == 6) {
+                document.write("<br>");
+                j = 0;
+            }
+        }
+    }
+    Fibonacci();
+    function Fibonacci1(n) {
+       if(n==1||n==2){
+           return 1;
+       }
+         return Fibonacci(n-1)+ Fibonacci(n-2);
+    }
+    document.write("第一个斐波那契数"+Fibonacci1(2)+"<br>");
+
+
+
+    var months = new Array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+    function DayOfYear(year, month, day1) {
+        var days = 0;
+        if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+            months[1] += 1;
+        }
+        for (var i = 0; i < month - 1; i++) {
+            days += months[i];
+        }
+        return days + day1;
+    }
+    document.write("<br>");
+    document.write(DayOfYear(2000, 11, 20));
+
+
+
+    //    function aa(){
+    //        console.log("maoliu");
+    //    }
+    //    aa();
+    //    for(var i = 0 ,j=10; i=j=10;  i++, j--){    //无限循环
+    //        console.log(i);
+    //    }
+    //    var  i;
+    //    console.log(i);
+    //    while(i=0){
+    //        console.log(i);
+    //        i--;
+    //    }
+    //abcdefghijkl
+</script>
+</body>
+</html>
