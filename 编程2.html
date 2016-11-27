@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var str="How are you doing today?"
+    function spilts(s){
+        var strr = s.split(" ");
+        var maxx= 0,minn= 100,iMin,iMax;
+        for(var i=0;i<strr.length;i++){
+              if(maxx<strr[i].length){
+                  maxx = strr.length;
+                  iMax = i;
+              }
+            if(minn>strr[i].length){
+                minn = strr.length;
+                iMin = i;
+            }
+        }
+        console.log("最长的是："+strr[iMax]+'  '+"最短的是："+strr[iMin]);
+    }
+    spilts(str);
+</script>
+</body>
+</html>
