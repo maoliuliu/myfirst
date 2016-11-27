@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #left{
+            float: left;
+            width: 200px;
+            height: 500px;
+            background: #ff0000;
+        }
+        #right{
+            float: left;
+            width: 500px;
+            height: 500px;
+            background: #00ff00;
+        }
+    </style>
+</head>
+<body>
+    <div id="left">div</div>
+    <div id="right">div2</div>
+    <script>
+        var oLeft = document.getElementById('left');
+        var oRight = document.getElementById('right');
+        oRight.style.width = document.documentElement.clientWidth - oLeft.offsetWidth + 'px';
+        window.onresize = function change(){
+            oRight.style.width = document.documentElement.clientWidth - oLeft.offsetWidth + 'px';
+        };
+
+    </script>
+</body>
+</html>
