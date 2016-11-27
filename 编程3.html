@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function find(str){
+        var num = [];
+        var flgs = 0;
+        num[0]=1;
+        for(var i=1;i<str.length;i++){
+           for(var j=0;j<i;j++){
+               if(str.charAt(i) == str.charAt([j])){
+                   num[j] += 1;
+                   flgs = 1;
+                   break;
+               }
+           }
+            if(flgs == 0){
+                num[j] = 1;
+            }
+        }
+        for(var i=0;i<num.length;i++){
+            if(num[i] == 1){
+               console.log(str[i]);
+                break;
+            }
+        }
+    }
+    find('abaccdeff');
+</script>
+</body>
+</html>
