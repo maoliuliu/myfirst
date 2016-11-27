@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function test(n, m) {
+        var tags = new Array();
+        for (var i = n; i <= m; i++) {
+            var str = i.toString();
+            var str1 = [];
+            for (var j = 0; j < str.length; j++) {
+                str1.push(str.charAt(j));
+            }
+            var str2 = str1.reverse();
+//            console.log(str2.join(""));
+            if (str == str2.join("")){
+                tags.push(str);
+            }
+        }
+        return tags;
+    }
+    var reslut = test(1,1001);
+    console.log(reslut);
+    </script>
+</body>
+</html>
