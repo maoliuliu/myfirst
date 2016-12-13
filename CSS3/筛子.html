@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: #000;
+            perspective: 1000px;
+            perspective-origin: 50%  -500px;
+        }
+        #container{
+            width: 200px;
+            height: 200px;
+            margin: 100px auto;
+            background: #00ff00;
+            opacity: 0.5;
+            transform-style: preserve-3d;
+            position: relative;
+            animation: rotate 2s linear infinite;
+        }
+        @keyframes  rotate {
+              from{
+
+              }
+            to{
+            transform: rotateY(-360deg);
+                             }
+        }
+        .cube{
+            width: 200px;
+            height: 200px;
+            background: #ffffff;
+            opacity: 0.6;
+            text-align: center;
+            line-height: 200px;
+            font-size: 60px;
+            border-radius: 10px;
+            border:1px solid #ffffff;
+            position: absolute;
+        }
+        #div1{
+            transform: rotateY(180deg) translateZ(100px);  /*Z轴也随着根据Y轴的旋转而旋转*/
+        }
+        #div2{
+            transform: rotateX(90deg) translateZ(100px);
+        }
+        #div3{
+            transform: rotateY(-90deg) translateZ(100px);
+        }
+        #div4{
+            transform: rotateY(90deg) translateZ(100px);
+        }
+        #div5{
+            transform: rotateX(-90deg) translateZ(100px);
+        }
+        #div6{
+            transform: translateZ(100px);
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="div1" class="cube">1</div>
+        <div id="div2" class="cube">2</div>
+        <div id="div3" class="cube">3</div>
+        <div id="div4" class="cube">4</div>
+        <div id="div5" class="cube">5</div>
+        <div id="div6" class="cube">6</div>
+    </div>
+</body>
+</html>

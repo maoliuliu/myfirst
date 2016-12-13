@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+      *{
+          margin: 0;
+          padding: 0;
+      }
+      body{
+          display: -webkit-box;
+      }
+        img{
+            width: 600px;
+            height: 400px;
+        }
+        #content{
+            width: 680px;
+            height: 400px;
+            margin: 100px auto;
+            position: relative;
+            box-shadow: 10px 10px 5px rgba(0,0,0,.5);
+            display:-webkit-flex;
+            display:flex;
+        }
+      .div-img{
+          width: 136px;
+          height: 400px;
+          display: block;
+          overflow: hidden;
+          float: left;
+
+      }
+  #content .div-img:hover{
+       -webkit-flex-basis:200%;
+       /*flex-basis:680px;*/
+   }
+    /*#content .div-img:not(.div-img[width="600px"]){*/
+           /*width: 20px;*/
+      /*}*/
+        .footer{
+            width: 600px;
+            height: 20px ;
+            background: #000;
+            opacity: .8;
+            line-height: 20px;
+            color: white;
+            font-size: 16px;
+            position: relative;
+            top: -24px;
+        }
+
+    </style>
+</head>
+<body>
+       <div id="content">
+           <div id="img1" class="div-img"><img src="img/css31.jpg" alt=""/> <div class="footer">描述1</div></div>
+           <div id="img2" class="div-img"><img src="img/css32.jpg" alt=""/> <div class="footer">描述2</div></div>
+           <div id="img3" class="div-img"><img src="img/css33.jpg" alt=""/> <div class="footer">描述3</div></div>
+           <div id="img4" class="div-img"><img src="img/css34.jpg" alt=""/> <div class="footer">描述4</div></div>
+           <div id="img5" class="div-img"><img src="img/css35.jpg" alt=""/> <div class="footer">描述5</div></div>
+       </div>
+</body>
+</html>

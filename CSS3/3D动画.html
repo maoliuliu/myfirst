@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+        }
+        #div1,#div3,#div5,#div7{
+            border: 1px dashed #000000;
+            margin: 100px auto;
+            perspective: 600px;
+        }
+        #div2{
+            background: #00ff00;
+            /*transform: rotateX(-45deg);*/
+            transform:rotate3d(1,1,0,45deg);  /*前三个参数分别表示x,y,z  3d旋转的的系数和最后一个参数的乘积*/
+        }
+        #div4{
+            background: #ff0000;
+            transform:translateZ(-100px) ;
+        }
+        #div6{
+            background: #ffff00;
+            transform:scale3d(2,2,2);/*z轴放大无意义*/
+        }
+        #div8{
+            background: #00ffff;
+            transform:skewX(30deg);
+        }
+    </style>
+</head>
+<body>
+      <div id="div1">
+          <div id="div2"></div>
+      </div>
+      <div id="div3">
+          <div id="div4"></div>
+      </div>
+      <div id="div5">
+          <div id="div6"></div>
+      </div>
+      <div id="div7">
+          <div id="div8"></div>
+      </div>
+</body>
+</html>

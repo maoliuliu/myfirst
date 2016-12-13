@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            display: -webkit-box;
+        }
+        img{
+            width: 480px;
+            height: 400px;
+        }
+        #content{
+            width: 680px;
+            height: 400px;
+            margin: 100px auto;
+            position: relative;
+            box-shadow: 5px 5px 5px rgba(0,0,0,.5);
+        }
+        .div-img{
+            width: 136px;
+            height: 400px;
+            display: block;
+            overflow: hidden;
+            position: relative;
+            float: left;
+            transition: all 1s ease;
+        }
+        #content:hover .div-img{
+            width: 50px;
+        }
+        #content .div-img:hover{
+            width: 480px;
+        }
+        /*#img1{*/
+            /*left: 0;*/
+        /*}*/
+        /*#img2{*/
+            /*left: 136px;*/
+        /*}*/
+        /*#img3{*/
+            /*left: 272px;*/
+        /*}*/
+        /*#img4{*/
+            /*left: 408px;*/
+        /*}*/
+        /*#img5{*/
+            /*left: 544px;*/
+        /*}*/
+        /**/
+        .footer{
+            width: 600px;
+            height: 20px ;
+            background: #000;
+            opacity: .8;
+            line-height: 20px;
+            color: white;
+            font-size: 16px;
+            position: absolute;
+            top: 380px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="content">
+    <div id="img1" class="div-img"><img src="img/css31.jpg" alt=""/> <div class="footer">描述1</div></div>
+    <div id="img2" class="div-img"><img src="img/css32.jpg" alt=""/> <div class="footer">描述2</div></div>
+    <div id="img3" class="div-img"><img src="img/css33.jpg" alt=""/> <div class="footer">描述3</div></div>
+    <div id="img4" class="div-img"><img src="img/css34.jpg" alt=""/> <div class="footer">描述4</div></div>
+    <div id="img5" class="div-img"><img src="img/css35.jpg" alt=""/> <div class="footer">描述5</div></div>
+</div>
+</body>
+</html>

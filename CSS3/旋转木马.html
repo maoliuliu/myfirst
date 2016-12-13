@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            perspective: 1000px;
+            perspective-origin: 50%  -400px;
+        }
+        #container{
+            width: 125px;
+            height: 125px;
+            margin: 100px auto;
+            /*background: #ff0000;*/
+            transform-style: preserve-3d;
+            transition: transform 1s ease;
+            /*perspective: 1000px;*/
+            /*perspective-origin: 50%  -500px;*/
+        }
+        li{
+            width: 125px;
+            height: 125px;
+            list-style: none;
+            position: absolute;
+            transition: all 1s ease;
+        }
+        /*#container li:nth-child(1){*/
+            /*transform: rotateY(40deg) translateZ(200px);*/
+        /*}*/
+        /*#container li:nth-child(2){*/
+            /*transform: rotateY(80deg) translateZ(200px);*/
+        /*}*/
+        /*#container li:nth-child(3){*/
+            /*transform: rotateY(120deg) translateZ(200px);*/
+        /*}*/
+        /*#container li:nth-child(4){*/
+            /*transform: rotateY(160deg) translateZ(200px);*/
+        /*}*/
+        /*#container li:nth-child(5){*/
+            /*transform: rotateY(200deg) translateZ(200px);*/
+        /*}*/
+        /*#container li:nth-child(6){*/
+            /*transform: rotateY(240deg) translateZ(200px);*/
+        /*}*/
+        /*#container li:nth-child(7){*/
+            /*transform: rotateY(280deg) translateZ(200px);*/
+        /*}*/
+        /*#container li:nth-child(8){*/
+            /*transform: rotateY(320deg) translateZ(200px);*/
+        /*}*/
+        /*#container li:nth-child(9){*/
+            /*transform: rotateY(360deg) translateZ(200px);*/
+        /*}*/
+        img{
+            width: 125px;
+            height: 125px;
+            border: none;
+        }
+
+    </style>
+</head>
+<body>
+<ul id="container">
+    <li><img src="../照片墙-img/1.jpg" alt=""/></li>
+    <li><img src="../照片墙-img/2.jpg" alt=""/></li>
+    <li><img src="../照片墙-img/3.jpg" alt=""/></li>
+    <li><img src="../照片墙-img/4.jpg" alt=""/></li>
+    <li><img src="../照片墙-img/5.jpg" alt=""/></li>
+    <li><img src="../照片墙-img/6.jpg" alt=""/></li>
+    <li><img src="../照片墙-img/7.jpg" alt=""/></li>
+    <li><img src="../照片墙-img/8.jpg" alt=""/></li>
+    <li><img src="../照片墙-img/9.jpg" alt=""/></li>
+</ul>
+<script>
+    var oContainer = document.getElementById('container');
+    var aImg = oContainer.getElementsByTagName('li');
+    var iNow = 0;
+    setTimeout(function(){
+    for(var i=0;i<aImg.length;i++){
+          aImg[i].style.transform = "rotateY("+40*i+"deg) translateZ(200px)";
+          aImg[i].style.transitionDelay= .1*i+"s";
+    }
+    },1000);
+//    for(var i=0;i<aImg.length;i++){
+//        aImg[i].onclick = function(){
+//            iNow++;
+//            oContainer.style.transform = "rotateY("+40*iNow+"deg)";
+//        };
+//    }
+    oContainer.onclick = function(){
+        iNow++;
+        oContainer.style.transform = "rotateY("+40*iNow+"deg)";
+    }
+</script>
+<!--
+图片加载的方式：
+       1，预加载：
+           var oImg = new Image();
+           oImg.src="img/12.jpg";   //如果一个对象有src属性则一定有onload()方法
+           oImg.onload = function(){         //预加载图片
+           }
+           在ie6的情况下，需要先预加载，把src属性写在onload()方法的下面
+       2，懒加载：
+-->
+</body>
+</html>
